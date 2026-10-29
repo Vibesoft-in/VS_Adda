@@ -788,7 +788,11 @@ function createEngine({ root, canvas, button, cursor, ramp, props }: any) {
 
   const home = () => {
     const [lo, hi] = xLimits();
-    if (!rampOn()) return clamp(s.W / 2, lo, hi);
+    if (!rampOn()) {
+      if (props.current.align === 'right') return clamp(s.W - s.bw / 2 - 28, lo, hi);
+      if (props.current.align === 'left') return clamp(s.bw / 2 + 28, lo, hi);
+      return clamp(s.W / 2, lo, hi);
+    }
     const g = rampGeo();
     return clamp(Math.min(g.foot * 0.5, g.x0 - 90, g.clear - s.bw / 2 - 40), lo, hi);
   };
@@ -1092,7 +1096,10 @@ function createEngine({ root, canvas, button, cursor, ramp, props }: any) {
     if (!s.placed) {
       s.x = home();
       s.placed = true;
-    } else if (W0 > 0 && W0 !== s.W) s.x *= s.W / W0;
+    } else if (W0 > 0 && W0 !== s.W) {
+      if (props.current.align === 'right' || props.current.align === 'left') s.x = home();
+      else s.x *= s.W / W0;
+    }
     if (!riding()) {
       const [lo, hi] = xLimits();
       s.x = clamp(s.x, lo, hi);
@@ -1189,7 +1196,7 @@ function createEngine({ root, canvas, button, cursor, ramp, props }: any) {
 
   const chooseLanding = (lead: number) => {
     const [lo, hi] = xLimits();
-    let x = s.x + lead;
+    let x = (props.current.align === 'right' || props.current.align === 'left' ? home() : s.x) + lead;
     if (rampOn()) x = Math.min(x, rampGeo().clear - s.bw / 2);
     s.landX = clamp(x, lo, hi);
   };
@@ -2001,6 +2008,7 @@ function createSim(gl: WebGL2RenderingContext) {
 export interface FlyingButtonProps {
   children?: React.ReactNode;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  align?: 'center' | 'right' | 'left';
   theme?: 'light' | 'dark';
   size?: 'small' | 'medium' | 'large' | 'extra-large';
   radius?: number;
@@ -2026,6 +2034,7 @@ export interface FlyingButtonProps {
 export default function FlyingButton({
   children = 'Take off',
   onClick,
+  align = 'center',
   theme = 'dark',
   size = 'medium',
   radius,
@@ -2069,6 +2078,7 @@ export default function FlyingButton({
       )
     : [];
   propsRef.current = {
+    align,
     size,
     altitude,
     hoverTime,
@@ -2109,7 +2119,7 @@ export default function FlyingButton({
 
   useEffect(() => {
     if (engineRef.current) engineRef.current.rehome();
-  }, [ramp]);
+  }, [ramp, align]);
 
   return (
     <div

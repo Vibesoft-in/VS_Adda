@@ -219,5 +219,6 @@
 
 .fixed-rocket-dock .flying-button__craft {
   pointer-events: auto !important;
+  cursor: pointer !important;
 }
 

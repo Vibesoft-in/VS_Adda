@@ -1,0 +1,267 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>Murmura Social Media Suite - Complete Technical Architecture Documentation</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin: 40px;
+  background-color: #ffffff;
+}
+h1 {
+  font-size: 26pt;
+  color: #0f172a;
+  border-bottom: 3px solid #2563eb;
+  padding-bottom: 12px;
+  margin-top: 24pt;
+}
+h2 {
+  font-size: 18pt;
+  color: #1e293b;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 8px;
+  margin-top: 20pt;
+}
+h3 {
+  font-size: 14pt;
+  color: #334155;
+  margin-top: 14pt;
+}
+p, li {
+  font-size: 11pt;
+  color: #334155;
+}
+code {
+  font-family: Consolas, 'Courier New', monospace;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10pt;
+}
+pre {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+  font-size: 10pt;
+}
+th {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  text-align: left;
+}
+td {
+  padding: 8px 14px;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+.callout {
+  background-color: #f0fdf4;
+  border-left: 5px solid #22c55e;
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+.callout-warning {
+  background-color: #fffbeb;
+  border-left: 5px solid #f59e0b;
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 9pt;
+  font-weight: bold;
+}
+.badge-pine { background-color: #dcfce7; color: #15803d; }
+.badge-coral { background-color: #fee2e2; color: #b91c1c; }
+.badge-butter { background-color: #fef3c7; color: #b45309; }
+.badge-sea { background-color: #e0f2fe; color: #0369a1; }
+</style>
+</head>
+<body>
+
+<h1>Murmura Social Media Suite - Complete Technical Architecture & Code Documentation</h1>
+
+<div class="callout">
+<b>Project Source URL:</b> <a href="https://demo.codeandchill.store/murmura/#/approvals">https://demo.codeandchill.store/murmura/#/approvals</a><br>
+<b>Target Workspace:</b> c:\xampp\htdocs\V.S Adda<br>
+<b>Documentation Type:</b> Deep Line-by-Line Architecture, State Engine, RBAC, All Pages & Functionality<br>
+<b>Language:</b> Hinglish (Technical Hindi-English)
+</div>
+
+<h2>1. Executive Summary & High-Level Overview</h2>
+<p><b>Murmura</b> ek enterprise-grade, high-performance social media management workspace hai jo agencies aur marketing teams ke liye design kiya gaya hai.</p>
+<ul>
+  <li><b>Multi-Brand Workspace:</b> Ek hi dashboard se 4 client brands (Vantage Garage, Ember & Oak, Hollow Home, Wildroot Botanicals) ko handle karna.</li>
+  <li><b>8 Integrated Social Networks:</b> Instagram, Facebook, X (Twitter), LinkedIn, TikTok, YouTube, Pinterest, aur Threads ka centralized publishing, analytics aur inbox.</li>
+  <li><b>Strict Approval Workflows:</b> Drafts ko bina client ya manager ke sign-off ke live hone se rokna, real-time feedback notes dena, aur audit logging maintain karna.</li>
+  <li><b>Ultra-Fast Performance:</b> Pure Vanilla JS aur GSAP micro-animations ke sath zero lag aur zero framework overhead.</li>
+</ul>
+
+<h2>2. Core Architecture & Tech Stack</h2>
+<p>Murmura kisi heavy framework (jaise React ya Vue) par nahi bana hai. Yeh modern native web standards par built hai:</p>
+<ul>
+  <li><b>Vite (Dynamic Code-Splitting):</b> Initial entry point <code>index.js</code> sirf ~200 KB ka hai. Har page alag dynamic chunk (<code>__vite__mapDeps</code>) ke roop mein split hai.</li>
+  <li><b>GSAP 3.15.0 + Flip Plugin:</b> Micro-animations, dynamic tab pill physics, 3D card flips (<code>rotationY: 90deg</code>), aur rubber-stamp bounce animations GSAP se chalti hain.</li>
+  <li><b>CSS Tokens System:</b> Vanilla CSS variables (<code>--cream</code>, <code>--ink</code>, <code>--pine</code>, <code>--coral</code>, <code>--butter</code>, <code>--sea</code>, <code>--lilac</code>).</li>
+  <li><b>Instant Pre-Paint Theme Script:</b> <code>index.html</code> ke head mein inline script hoti hai jo DOM paint se pehle <code>localStorage</code> se theme load karke set karti hai taaki zero color flash ho.</li>
+</ul>
+
+<h2>3. Global State Management & Reactive Store (Y)</h2>
+<p>Poora data ek single global JavaScript object <code>Y</code> mein rehta hai, jo <code>localStorage</code> key <code>'murmura:v1'</code> ke sath 2-way sync rehta hai:</p>
+<pre>
+Y = {
+  version: 1,
+  session: { userId: "m-camila" },
+  brands: [ ... ],       // 4 Brands metadata
+  channels: [ ... ],     // 8 Social networks connected handles
+  posts: [ ... ],        // Posts array with reviews, media, status
+  campaigns: [ ... ],    // Marketing campaigns
+  convos: [ ... ],       // Social inbox conversations
+  replies: [ ... ],      // Saved canned responses
+  assets: [ ... ],       // Media library images and videos
+  hashtags: [ ... ],     // Reusable hashtag sets
+  templates: [ ... ],    // Dynamic post templates ({date}, {car}, {service})
+  keywords: [ ... ],     // Listening keywords
+  mentions: [ ... ],     // Social mentions with sentiment
+  competitors: [ ... ],  // Benchmarking competitor statistics
+  members: [ ... ],      // Workspace users and roles
+  roles: [ ... ],        // Role definitions and permission arrays
+  audit: [ ... ],        // 200 items audit history trail
+  notices: [ ... ],      // In-app notifications
+  settings: {
+    workspace: "Northlight Studio",
+    timezone: "Europe/Lisbon",
+    weekStart: 1,
+    approval: "perm",    // 'perm' | 'always' | 'off'
+    shortenLinks: true,
+    utm: true,
+    plan: "agency",
+    seats: 15
+  },
+  ui: { brand: "all" }
+}
+</pre>
+
+<h3>Reactivity Implementation:</h3>
+<ul>
+  <li><code>as(...keys)</code>: State mutate karke <code>localStorage</code> mein save karta hai aur sabhi registered view subscribers ko notify karta hai.</li>
+  <li><code>rs(key, fn)</code>: View ko specific state key par listen karne ki suvidha deta hai.</li>
+  <li><code>ns(fn)</code>: Page unmount hone par automatically sabhi event listeners aur subscriptions ko clean karta hai (Garbage collection).</li>
+</ul>
+
+<h2>4. Role-Based Access Control (RBAC) & Permissions Matrix</h2>
+<table>
+  <tr><th>Permission Name</th><th>Meaning & Capabilities</th></tr>
+  <tr><td><code>post.create</code></td><td>Naye posts draft karna, media attach karna, schedule banana</td></tr>
+  <tr><td><code>post.approve</code></td><td>Pending posts ko <b>Approve</b> karna ya <b>Request Changes</b> bhejna</td></tr>
+  <tr><td><code>post.publish</code></td><td>Posts ko force <b>Publish Now</b> karna ya schedule override karna</td></tr>
+  <tr><td><code>inbox.reply</code></td><td>Customer messages aur comments ka reply dena</td></tr>
+  <tr><td><code>inbox.assign</code></td><td>Inbox conversations kisi team member ko assign karna</td></tr>
+  <tr><td><code>analytics.view</code></td><td>Analytics graphs aur engagement reports dekhna</td></tr>
+  <tr><td><code>listening.manage</code></td><td>Brand listening keywords monitor karna aur competitors add karna</td></tr>
+  <tr><td><code>team.manage</code></td><td>Team members ko invite karna, unke roles modify karna</td></tr>
+  <tr><td><code>channels.manage</code></td><td>Social accounts connect ya disconnect karna</td></tr>
+</table>
+
+<h2>5. Module Deep-Dive: Approvals Engine (#/approvals)</h2>
+<p>Yeh Murmura ka core module hai jiska code <code>approvals-9_LkHnvX.js</code> aur <code>approvals-CaOosbas.css</code> mein hai:</p>
+
+<h3>A. Tabs & Filter System:</h3>
+<ul>
+  <li><code>mine</code> (Waiting for me / To review): Wo posts jo pending hain aur user jinka approver hai.</li>
+  <li><code>pending</code> (All pending): Workspace ke sabhi pending posts.</li>
+  <li><code>changes</code> (Changes requested): Wo posts jinpar revisions maange gaye hain.</li>
+  <li><code>submitted</code> (My submissions): Current user ke apne likhe hue pending posts.</li>
+  <li><code>approved</code> (Recently approved): Pichhle 14 dino mein approve hue posts.</li>
+  <li><b>Brand Chips Filter:</b> Toolbar mein brand pills jinse instant client-level filtering hoti hai.</li>
+</ul>
+
+<h3>B. Post Card Components:</h3>
+<ul>
+  <li><b>Media Carousel:</b> Multiple photos ke liye dots pagination (<code>.ap-dot</code>). Text-only post ke liye clean note layout.</li>
+  <li><b>Due Date Indicator:</b> Due time ke hisaab se dynamic badge: <code>"Goes out: Tomorrow 4:00 PM"</code>, <code>"Due soon"</code>, <code>"Was due"</code>.</li>
+  <li><b>Target Network Icons:</b> Targeted platforms (Instagram, X, Facebook, LinkedIn, TikTok, Threads).</li>
+  <li><b>Author & Approver Badges:</b> Creator name aur un approvers ke avatars jo sign-off kar sakte hain.</li>
+  <li><b>Review History Audit Trail:</b> Card ke andar past review steps, timestamp, aur approver ka quote note: <code>&lt;q&gt;"Lead with the price."&lt;/q&gt;</code>.</li>
+</ul>
+
+<h3>C. Interactive Workflows & Physics Animations:</h3>
+<ul>
+  <li><b>Instant Approve:</b> Card par physical rubber stamp animation chalti hai (<code>.ap-stamp</code> scale: 1.4 -> 1). Status <code>scheduled</code> set hota hai, author ko notification milta hai, aur floating Undo Toast render hota hai.</li>
+  <li><b>Request Changes:</b> Modal khulta hai jisme quick suggestion chips hote hain (<i>Swap the photo, Shorten the caption, Check the price, Add the link, Fix the hashtags, Move the time</i>). Submit par card <b>3D Flip</b> (<code>rotationY: 90deg</code>) karta hai coral-red back face ke sath aur list se exit ho jata hai.</li>
+  <li><b>Bulk Approval:</b> Multiple cards select karne par floating bar slide-up hoti hai (<code>"3 selected"</code>). Approve selected dabane par sabhi posts ek sath approve ho jate hain.</li>
+  <li><b>Native Social Preview Drawer:</b> Card par double-click karne par right drawer khulta hai jisme Instagram, X, LinkedIn aur Facebook ka pixel-perfect native preview render hota hai.</li>
+</ul>
+
+<h2>6. Summary of All Other Modules</h2>
+<ul>
+  <li><b>Overview (<code>#/overview</code>):</b> Urgent action center ("Needs you"), upcoming live queue ticker ("Up next"), audience growth mini-charts, the week ahead publishing load matrix.</li>
+  <li><b>Compose (<code>#/compose</code>):</b> 8 social networks multi-publisher, network-specific character counters, media uploader, smart scheduling heatmap algorithm (<code>Vs</code>, <code>Hs</code>), Instagram first comment scheduler.</li>
+  <li><b>Calendar (<code>#/calendar</code>):</b> Month, week aur day views, pointer-event drag-and-drop rescheduling, brand/network/campaign filters.</li>
+  <li><b>Inbox (<code>#/inbox</code>):</b> Unified social messages across 8 networks, AI sentiment analysis (Positive, Neutral, Negative), team assignment, canned quick responses.</li>
+  <li><b>Analytics (<code>#/analytics</code> + <code>charts.js</code>):</b> 167-line custom native SVG chart engine, Bezier curve plotting, 7x24 engagement heatmap grid, content mix donut chart, CSV/PDF export.</li>
+  <li><b>Listening (<code>#/listening</code>):</b> Real-time brand mentions stream, sentiment timeline, share of voice competitor breakdown, trending terms.</li>
+  <li><b>Library (<code>#/library</code>):</b> 4 shelves (Media assets, Templates, Hashtag sets, Saved replies), batch selection & "Use in post" workflow.</li>
+  <li><b>Channels (<code>#/channels</code>):</b> 8 social networks hub, token health & expiry alerts, 1-click reconnect, channel statistics.</li>
+  <li><b>Team & Roles (<code>#/team</code>):</b> Members directory, permissions matrix table, brand access scope, invite modal.</li>
+  <li><b>Settings (<code>#/settings</code>):</b> Workspace configuration, approval workflow policies (<code>perm</code>, <code>always</code>, <code>off</code>), theme toggle, demo seed reset.</li>
+</ul>
+
+<h2>7. Asset Chunks Inventory & File Structure</h2>
+<table>
+  <tr><th>File Name</th><th>Type</th><th>Size / Lines</th><th>Description</th></tr>
+  <tr><td><code>index.html</code></td><td>Shell</td><td>155 lines</td><td>Base layout, head script, navigation bars, modals</td></tr>
+  <tr><td><code>index.css</code></td><td>Global Styles</td><td>1,500+ lines</td><td>Design tokens, typography, dock, layout styles</td></tr>
+  <tr><td><code>index.js</code></td><td>Core Engine</td><td>4,172 lines</td><td>GSAP 3.15 + Flip, Reactive Store Y, Hash Router</td></tr>
+  <tr><td><code>approvals-9_LkHnvX.js</code></td><td>View Chunk</td><td>803 lines</td><td>Approvals queue, rubber stamp, 3D card flip</td></tr>
+  <tr><td><code>approvals-CaOosbas.css</code></td><td>View CSS</td><td>16 KB</td><td>Approvals card layout, bulk bar, stamp styles</td></tr>
+  <tr><td><code>compose-DcEkompt.js</code></td><td>View Chunk</td><td>1,559 lines</td><td>Multi-channel composer, scheduler, character limits</td></tr>
+  <tr><td><code>calendar-dC-sZzXf.js</code></td><td>View Chunk</td><td>1,297 lines</td><td>Drag-and-drop publishing calendar</td></tr>
+  <tr><td><code>inbox-Czp4FX5r.js</code></td><td>View Chunk</td><td>1,460 lines</td><td>Unified social inbox, sentiment tagging</td></tr>
+  <tr><td><code>analytics-CqzZ4ABz.js</code></td><td>View Chunk</td><td>832 lines</td><td>Metrics, KPI cards, heatmap</td></tr>
+  <tr><td><code>charts-Cm206kS9.js</code></td><td>Chart Engine</td><td>167 lines</td><td>Lightweight native SVG chart renderer</td></tr>
+  <tr><td><code>listening-CzGtIEnV.js</code></td><td>View Chunk</td><td>814 lines</td><td>Social listening & brand mentions stream</td></tr>
+  <tr><td><code>library-CKQOu0xM.js</code></td><td>View Chunk</td><td>1,103 lines</td><td>Media assets, templates, hashtags, replies</td></tr>
+  <tr><td><code>channels-CluNZ7pp.js</code></td><td>View Chunk</td><td>852 lines</td><td>Connected social accounts & OAuth health</td></tr>
+  <tr><td><code>team-BzN6aZIm.js</code></td><td>View Chunk</td><td>1,378 lines</td><td>Members directory, permissions matrix</td></tr>
+  <tr><td><code>settings-De7NLl3t.js</code></td><td>View Chunk</td><td>999 lines</td><td>Workspace settings, approval rules, theming</td></tr>
+  <tr><td><code>overview-C5kP9O_e.js</code></td><td>View Chunk</td><td>417 lines</td><td>Dashboard overview, "Needs you" widget</td></tr>
+</table>
+
+<p style="margin-top: 30pt; font-size: 9pt; color: #94a3b8; text-align: center;">
+<i>Generated by Antigravity AI for Workspace c:\xampp\htdocs\V.S Adda</i>
+</p>
+
+</body>
+</html>

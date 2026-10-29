@@ -1,0 +1,624 @@
+@import './murmura-base.css';
+@import './approvals.css';
+@import './overview.css';
+@import './compose.css';
+@import './calendar.css';
+@import './inbox.css';
+@import './analytics.css';
+@import './listening.css';
+@import './library.css';
+@import './channels.css';
+@import './team.css';
+@import './settings.css';
+
+@tailwind components;
+@tailwind utilities;
+
+/* Murmura Visual Fidelity */
+.tab[aria-current="page"]:hover {
+  background: transparent !important;
+}
+
+.chip[aria-pressed="true"],
+.chip.active {
+  background: var(--pill) !important;
+  color: var(--on-pill) !important;
+  border-color: transparent !important;
+}
+
+.chip[aria-pressed="true"] .bmark {
+  box-shadow: 0 0 0 2px var(--on-pill) !important;
+}
+
+/* Ambient Floating Mesh Blobs */
+.mesh__a {
+  animation: meshDriftA 26s ease-in-out infinite alternate;
+}
+.mesh__b {
+  animation: meshDriftB 32s ease-in-out infinite alternate;
+}
+.mesh__c {
+  animation: meshDriftC 22s ease-in-out infinite alternate;
+}
+
+@keyframes meshDriftA {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4vw, 3vh, 0) scale(1.08); }
+  100% { transform: translate3d(-3vw, 5vh, 0) scale(0.96); }
+}
+
+@keyframes meshDriftB {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-5vw, -4vh, 0) scale(1.06); }
+  100% { transform: translate3d(3vw, -2vh, 0) scale(0.95); }
+}
+
+@keyframes meshDriftC {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3vw, 4vh, 0) scale(1.05); }
+  100% { transform: translate3d(-2vw, -3vh, 0) scale(0.98); }
+}
+
+/* Settings tab active state */
+.st-tab[aria-current="page"],
+.st-tab.active {
+  background: var(--pill) !important;
+  color: var(--on-pill) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12) !important;
+}
+
+.st-tab[aria-current="page"] .ico,
+.st-tab.active .ico {
+  stroke: var(--on-pill) !important;
+}
+
+/* Post Media Carousel Images */
+[data-view="approvals"] .ap-media img,
+.ap-media img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+[data-view="approvals"] .ap-media img.is-on,
+.ap-media img.is-on {
+  opacity: 1 !important;
+}
+
+.tabular-nums,
+.tnum {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* GPU Hardware Acceleration & Subpixel Font Smoothing */
+body,
+.app,
+.view,
+.ap-card,
+.tabs__pill,
+.seg__pill {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Smooth Card Rendering & Micro-Interactions */
+[data-view="approvals"] .ap-card {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-view="approvals"] .ap-card:not(.is-leaving):hover {
+  transform: translateY(-2px) translateZ(0);
+  box-shadow: var(--shadow-pop);
+}
+
+/* Tactile Button Feedback */
+.btn:active,
+.ibtn:active,
+.chip:active,
+.dock__btn:active {
+  transform: scale(0.965);
+  transition: transform 0.08s ease;
+}
+
+/* 3D Flip Perspective Container */
+[data-view="approvals"] .ap-list {
+  perspective: 1400px;
+}
+
+/* Universal Page Entrance Fade-In & Lift Animation */
+@keyframes viewFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.view {
+  animation: viewFadeIn 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  will-change: opacity, transform;
+}
+
+/* ========================================================
+   Header Stats Strip: Organic Icon Movement & Physics
+   ======================================================== */
+.stat {
+  cursor: pointer;
+  user-select: none;
+}
+
+.stat__ico {
+  transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+  will-change: transform, box-shadow;
+  position: relative;
+}
+
+.stat__ico .ico,
+.stat__ico svg {
+  transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+/* ==========================================================================
+   PERSISTENT & CONTINUOUS HOVER ANIMATIONS FOR ALL ICONS
+   Never stops after 1 cycle; continuously animates on hover (infinite loop)
+   ========================================================================== */
+
+/* 1. All Brands Button Icon (4-grid squares continuous rotating & scaling) */
+@keyframes bswitchIconSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.12);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.12);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes chevronNudge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.bswitch:hover .bswitch__all {
+  animation: bswitchIconSpin 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+  will-change: transform;
+}
+
+.bswitch:hover > .ico {
+  animation: chevronNudge 0.9s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+/* 2. Notification Bell Icon (Continuous Ringing & Swinging) */
+@keyframes bellRingContinuous {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(15deg);
+  }
+  24% {
+    transform: rotate(-13deg);
+  }
+  36% {
+    transform: rotate(9deg);
+  }
+  48% {
+    transform: rotate(-7deg);
+  }
+  60% {
+    transform: rotate(4deg);
+  }
+  72% {
+    transform: rotate(-2deg);
+  }
+  84%, 100% {
+    transform: rotate(0deg);
+  }
+}
+
+#btn-bell:hover .ico,
+.ibtn[aria-label*="Notification" i]:hover .ico,
+.ibtn[title*="Notification" i]:hover .ico,
+.dot-badge ~ .ico:hover {
+  animation: bellRingContinuous 1.1s ease-in-out infinite !important;
+  transform-origin: 50% 12% !important;
+  will-change: transform;
+}
+
+/* 3. User Profile Avatar Pill (Continuous Floating & Breathing) */
+@keyframes avatarContinuousFloat {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 0 0 0 rgba(17, 116, 90, 0.25);
+  }
+  50% {
+    transform: scale(1.1) translateY(-2.5px);
+    box-shadow: 0 6px 16px -2px rgba(17, 116, 90, 0.4);
+  }
+}
+
+.me:hover .av {
+  animation: avatarContinuousFloat 1.25s ease-in-out infinite !important;
+  will-change: transform, box-shadow;
+}
+
+/* 4. New Post Button (Pen Icon Continuous Writing Motion) */
+@keyframes penContinuousWrite {
+  0%, 100% {
+    transform: rotate(0deg) translate(0, 0) scale(1);
+  }
+  25% {
+    transform: rotate(-14deg) translate(-1.5px, -2px) scale(1.15);
+  }
+  50% {
+    transform: rotate(5deg) translate(1px, -0.5px) scale(1.08);
+  }
+  75% {
+    transform: rotate(-9deg) translate(-1px, 1px) scale(1.16);
+  }
+}
+
+.btn--ink:hover .ico,
+.btn:hover .ico,
+.head__tools .btn:hover .ico,
+.dock__btn--new:hover .ico {
+  animation: penContinuousWrite 1s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+/* 5. Header Stats Strip Icons (Active & Alive Continuous Bounce) */
+@keyframes statHoverLiveBounce {
+  0%, 100% {
+    transform: translateY(-5px) scale(1.1) rotate(0deg);
+    box-shadow: 0 14px 28px -8px rgba(0, 0, 0, 0.22), 0 0 0 1.5px var(--rim);
+  }
+  50% {
+    transform: translateY(-9px) scale(1.15) rotate(3deg);
+    box-shadow: 0 18px 34px -8px rgba(0, 0, 0, 0.28), 0 0 0 2px var(--rim);
+  }
+}
+
+@keyframes statHoverIconWiggle {
+  0%, 100% {
+    transform: scale(1.14) rotate(6deg);
+  }
+  50% {
+    transform: scale(1.22) rotate(-6deg);
+  }
+}
+
+.stat:hover .stat__ico {
+  animation: statHoverLiveBounce 1.15s ease-in-out infinite alternate !important;
+  animation-play-state: running !important;
+  border-color: var(--text) !important;
+  background: var(--glass-3) !important;
+}
+
+.stat:hover .stat__ico .ico,
+.stat:hover .stat__ico svg {
+  animation: statHoverIconWiggle 1.15s ease-in-out infinite alternate !important;
+  animation-play-state: running !important;
+}
+
+/* 6. Dock Navigation Icons (Continuous Pulse Bounce) */
+@keyframes dockIconPulse {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.18) translateY(-2.5px);
+  }
+}
+
+.dock__btn:hover .ico {
+  animation: dockIconPulse 0.95s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+/* 7. Brand Mark Logo (Continuous Gentle Heartbeat Wave) */
+@keyframes brandMarkPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+.brand:hover .brand__mark {
+  animation: brandMarkPulse 1.2s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+/* 8. Generic Icon Buttons (.ibtn) Continuous Hover Pulse */
+@keyframes ibtnHoverBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.16);
+  }
+}
+
+.ibtn:hover:not(#btn-bell) .ico {
+  animation: ibtnHoverBounce 0.95s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   GRAPH & CHART FILLING-UP ANIMATIONS (GLOBAL SYSTEM)
+   Tuned to complete ~1 second after the page finishes loading:
+   Page load (viewFadeIn) = 0.10s delay + 0.68s duration = 0.78s finish.
+   Graph animations start at ~0.40s with a 1.40s smooth, steady duration,
+   finishing right at ~1.78s - 1.80s (exactly 1.0s after page loading completes).
+   ========================================================================== */
+
+/* 1. SVG Line Stroke Drawing Animation */
+@keyframes graphDrawStroke {
+  0% {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  100% {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+.chart__line--draw,
+.chart__line--spark,
+.spark path,
+.an-trend .spark path,
+.ls-k__spark .spark path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: graphDrawStroke 1.4s cubic-bezier(0.25, 0.9, 0.35, 1) 0.4s both;
+  will-change: stroke-dashoffset;
+}
+
+/* 2. SVG Area Fill Rising Up from Baseline (filling up liquid/gradient effect) */
+@keyframes graphAreaFillUp {
+  0% {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 1;
+  }
+}
+
+.chart__area,
+.an-chart path[fill^="url"],
+.ov-growth__chart path[fill^="url"],
+.ls-chart path[fill^="url"] {
+  animation: graphAreaFillUp 1.4s cubic-bezier(0.25, 0.9, 0.35, 1) 0.4s both;
+  will-change: clip-path, opacity;
+}
+
+/* 3. Horizontal Bar & Meter Fill Expansion */
+@keyframes trackUnmask {
+  0% {
+    clip-path: inset(0 100% 0 0 round 999px);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0 round 999px);
+  }
+}
+
+.ls-bar__track,
+.an-mix__meter,
+.meter {
+  animation: trackUnmask 1.4s cubic-bezier(0.25, 0.9, 0.35, 1) 0.4s both;
+  will-change: clip-path;
+}
+
+.ls-bar__fill,
+.an-mix__fill,
+.meter__fill {
+  transform-origin: 0 50% !important;
+  will-change: transform;
+}
+
+/* 4. Sentiment Split Bars Filling Up */
+@keyframes splitBarGrow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.ls-split {
+  transform-origin: 0 50%;
+  animation: splitBarGrow 1.4s cubic-bezier(0.25, 0.9, 0.35, 1) 0.4s both;
+  will-change: transform, opacity;
+}
+
+/* 5. Vertical Bars Growing from Bottom */
+@keyframes barGrowUp {
+  0% {
+    transform: scaleY(0);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.bars__bar,
+.chart__bar {
+  transform-origin: 50% 100%;
+  animation: barGrowUp 1.4s cubic-bezier(0.25, 0.9, 0.35, 1) 0.4s both;
+  will-change: transform;
+}
+
+/* 6. Donut / Radial Arcs Drawing */
+@keyframes donutArcDraw {
+  0% {
+    stroke-dashoffset: 450;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.donut__arc {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: donutArcDraw 1.4s cubic-bezier(0.25, 0.9, 0.35, 1) 0.4s both;
+}
+
+/* 7. Heatmap Cell Intensity Filling */
+@keyframes heatCellFillUp {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.an-cell i {
+  transform-origin: 50% 50%;
+  animation: heatCellFillUp 1.35s cubic-bezier(0.25, 0.9, 0.35, 1) 0.42s both;
+}
+
+/* ==========================================================================
+   Executive Luxury & SaaS Polish Upgrades
+   ========================================================================== */
+
+:root {
+  --font: "Urbanist", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg: #090a0c;
+  --solid: #121417;
+  --float: #171a1e;
+  --glass: rgba(18, 20, 23, 0.78);
+  --glass-2: rgba(255, 255, 255, 0.05);
+  --glass-3: #181b20;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
+  --rim: rgba(255, 255, 255, 0.1);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 20px 48px -20px rgba(0, 0, 0, 0.7);
+  --shadow-pop: 0 28px 64px -18px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Tactile Micro-Noise Texture on Canvas */
+.mesh::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+:root[data-theme="dark"] .mesh::after {
+  opacity: 0.045;
+}
+
+/* Crisp Bento Specular Lighting on Cards */
+.card {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 18px 40px -20px rgba(22, 25, 29, 0.09) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+:root[data-theme="dark"] .card {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.09) inset, 0 20px 46px -18px rgba(0, 0, 0, 0.65) !important;
+  background: rgba(18, 20, 23, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.card:hover {
+  border-color: var(--line-2) !important;
+}
+
+:root[data-theme="dark"] .card:hover {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Typography Hierarchy & Kerning */
+h1, h2, h3, .head__title, .card__title {
+  letter-spacing: -0.024em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+.tnum, .num, [data-count], time {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Micro Kbd Badges for Shortcuts */
+kbd {
+  font-family: var(--font-mono);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* Luxury Skeleton Shimmer Loading Effect */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--well) 0%,
+    var(--glass-2) 50%,
+    var(--well) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.8s infinite linear;
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes shrinkProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+
+
+

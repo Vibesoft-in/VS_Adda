@@ -1,0 +1,228 @@
+
+<!-- === TEMPLATE 1 === -->
+<span class="st-saved" aria-hidden="true"><svg class="st-tickmark" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4 4L18.5 8" pathLength="1"/></svg>Saved</span>
+
+<!-- === TEMPLATE 2 === -->
+<header class="st-sec"><div><h2>${n.label}</h2><p class="card__sub">${n.sub}</p></div>${t}</header>
+
+<!-- === TEMPLATE 3 === -->
+)}
+    <div class="st-profile">
+      <div class="st-face" data-row>${t(e.id,
+
+<!-- === TEMPLATE 4 === -->
+)}
+        <div class="st-face__t"><b>${h(e.name)}</b>${E(e.role)}
+          <div class="st-face__seg">${be(
+
+<!-- === TEMPLATE 5 === -->
+}</div></div>
+      <div class="st-fields">
+        ${Y(
+
+<!-- === TEMPLATE 6 === -->
+)}
+        <div class="field st-ro"><span class="field__label">Role</span><p>${E(e.role)} <span class="card__sub">Set by an admin on the Team page.</span></p></div>
+      </div>
+      ${De(e)}
+    </div>
+
+<!-- === TEMPLATE 7 === -->
+<div class="st-access">
+    <div><h3>${T(
+
+<!-- === TEMPLATE 8 === -->
+)}Brands you can see</h3><div class="st-access__brands">${n.map(e=>ge(e.id)).join(
+
+<!-- === TEMPLATE 9 === -->
+}</div>
+      <p class="card__sub">${e.brands===
+
+<!-- === TEMPLATE 10 === -->
+}</p></div>
+    <div><h3>${T(
+
+<!-- === TEMPLATE 11 === -->
+)}What your role can do</h3><ul class="st-access__perms">${ee.map(e=>
+
+<!-- === TEMPLATE 12 === -->
+<label class="field st-field" data-row for="st-${e}"><span class="field__label st-label">${t}${P}</span>
+    <input id="st-${e}" name="${e}" type="${i}" value="${h(n)}" autocomplete="${r}" data-text="${e}" ${a} /><span class="field__hint st-err" data-err></span></label>
+
+<!-- === TEMPLATE 13 === -->
+<li class="st-item" data-row>${a?
+
+<!-- === TEMPLATE 14 === -->
+}<div class="st-item__t"><b id="st-l-${e}">${t}${P}</b><small id="st-d-${e}">${n}</small></div>
+    <button type="button" class="switch" role="switch" aria-checked="${r}" aria-labelledby="st-l-${e}" aria-describedby="st-d-${e}" data-switch="${e}" ${i}></button></li>
+
+<!-- === TEMPLATE 15 === -->
+)}
+    <ul class="st-list">${k.map(([e,t,n,r])=>X(
+
+<!-- === TEMPLATE 16 === -->
+)}</ul>
+    <p class="st-note">${T(
+
+<!-- === TEMPLATE 17 === -->
+}
+    <div class="st-fields">
+      ${Y(
+
+<!-- === TEMPLATE 18 === -->
+,t)}
+      <label class="field st-field" data-row for="st-tz"><span class="field__label st-label">Time zone${P}</span>
+        <select id="st-tz" data-tz ${t}>${[...new Set([e.timezone,...Ce])].map(t=>
+
+<!-- === TEMPLATE 19 === -->
+)}</select>
+        <span class="field__hint">Schedules and reports use this clock.</span></label>
+    </div>
+    <ul class="st-list">
+      <li class="st-item" data-row><span class="st-item__ico">${T(
+
+<!-- === TEMPLATE 20 === -->
+)}</span><div class="st-item__t"><b>Week starts on${P}</b><small>The calendar and weekly reports follow this.</small></div>
+        <div data-week ${t?
+
+<!-- === TEMPLATE 21 === -->
+)}
+    </ul>
+    <div class="st-fields st-fields--one">${Y(
+
+<!-- === TEMPLATE 22 === -->
+))}</div>
+    <div class="st-preview"><span class="card__sub">A link in a post will look like</span><code data-link>${h(je())}</code></div>
+
+<!-- === TEMPLATE 23 === -->
+<li class="st-pchip" data-key="${e.id}">${t(e.id,
+
+<!-- === TEMPLATE 24 === -->
+<div class="st-pcol"><h3>${T(
+
+<!-- === TEMPLATE 25 === -->
+}</ul></div>
+    <div class="st-pcol"><h3>${T(
+
+<!-- === TEMPLATE 26 === -->
+}
+    <div class="st-rules" role="radiogroup" aria-label="Approval rule" data-row>
+      ${A.map(n=>
+
+<!-- === TEMPLATE 27 === -->
+)}
+    </div>
+    <p class="st-live" aria-live="polite"><span data-sentence>${Ne()}</span>${P}</p>
+    <div class="st-people" data-people>${Fe()}</div>
+    <p class="st-note">${T(
+
+<!-- === TEMPLATE 28 === -->
+}
+    <ul class="st-list">${X(
+
+<!-- === TEMPLATE 29 === -->
+)}</ul>
+    <div class="st-cover">
+      <div class="st-cover__num"><b>${Math.round(a*100)}%</b><span>of active people use two-factor</span></div>
+      <span class="meter"><span class="meter__fill meter__fill--pine" data-fill="${a}"></span></span>
+      ${i.length?
+
+<!-- === TEMPLATE 30 === -->
+}
+    </div>
+    <div class="st-subhead"><h3>Your active sessions</h3><button type="button" class="btn btn--ghost btn--sm" data-signout-all ${B.length>1?
+
+<!-- === TEMPLATE 31 === -->
+)}Sign out everywhere else</button></div>
+    <ul class="st-sessions" data-sessions>${B.map(Re).join(
+
+<!-- === TEMPLATE 32 === -->
+<li class="st-session" data-key="${e.id}" data-session="${e.id}"><span class="st-item__ico">${T(e.ico)}</span>
+    <div class="st-item__t"><b>${h(e.device)}${e.current?
+
+<!-- === TEMPLATE 33 === -->
+}
+    <div class="st-plans" role="radiogroup" aria-label="Plan">${j.map(r=>
+
+<!-- === TEMPLATE 34 === -->
+<span class="badge badge--butter">Current</span>
+
+<!-- === TEMPLATE 35 === -->
+<span class="st-plan__here">Your plan</span>
+
+<!-- === TEMPLATE 36 === -->
+<button type="button" class="btn btn--sm ${j.indexOf(r)>j.indexOf(t)?
+
+<!-- === TEMPLATE 37 === -->
+)}</div>
+    <div class="st-seats" data-row>
+      <div class="st-item__t"><b>Seats${P}</b><small>${r} in use · ${t.included} included · max ${t.maxSeats} on ${t.name}</small></div>
+      <div class="st-stepper"><button type="button" class="ibtn" data-seat="-1" aria-label="Remove a seat" ${n||(e.seats<=r?
+
+<!-- === TEMPLATE 38 === -->
+)}</button>
+        <b data-seats aria-live="polite">${e.seats}</b>
+        <button type="button" class="ibtn" data-seat="1" aria-label="Add a seat" ${n||(e.seats>=t.maxSeats?
+
+<!-- === TEMPLATE 39 === -->
+)}</button></div>
+      <div class="st-seats__total"><small>Monthly total</small><b data-total>${w(N())}</b></div>
+    </div>
+    <p class="st-note">${T(
+
+<!-- === TEMPLATE 40 === -->
+)}<span>Next charge <b data-next>${w(N())}</b> on ${ce(a.getTime(),!0)} to Visa ending 4242.</span></p>
+    <div class="st-subhead"><h3>Invoices</h3></div>
+    <ul class="st-invoices">${s.map(e=>
+
+<!-- === TEMPLATE 41 === -->
+)}
+    <div class="st-themes" role="radiogroup" aria-label="Theme" data-row>${[
+
+<!-- === TEMPLATE 42 === -->
+)}</div>
+    <p class="st-live"><span>Theme is remembered on this device.</span>${P}</p>
+
+<!-- === TEMPLATE 43 === -->
+)}
+    <ul class="st-list">
+      <li class="st-item"><span class="st-item__ico">${T(
+
+<!-- === TEMPLATE 44 === -->
+)}</span><div class="st-item__t"><b>Workspace backup</b><small>Every brand, channel, post, person, role and setting as JSON · ${e} KB.</small></div>
+        <button type="button" class="btn btn--ghost btn--sm" data-export-json ${U(
+
+<!-- === TEMPLATE 45 === -->
+)}Export JSON</button></li>
+      <li class="st-item"><span class="st-item__ico">${T(
+
+<!-- === TEMPLATE 46 === -->
+)}</span><div class="st-item__t"><b>Posts and results</b><small>${i().length} posts you can see, with reach and engagement, as CSV.</small></div>
+        <button type="button" class="btn btn--ghost btn--sm" data-export-csv ${U(
+
+<!-- === TEMPLATE 47 === -->
+)}Export CSV</button></li>
+    </ul>
+    <div class="st-danger"><div><b>Reset demo data</b><small>Puts every post, channel, person, role and setting back to the starting data. Your theme stays.</small></div>
+      <button type="button" class="btn btn--danger" data-reset>${T(
+
+<!-- === TEMPLATE 48 === -->
+}]})}
+  <div class="st-grid">
+    <aside class="card st-side">
+      <div class="st-me">${t(n.id,
+
+<!-- === TEMPLATE 49 === -->
+)}<div><b>${h(n.name)}</b>${E(n.role)}</div></div>
+      <nav class="st-navwrap" aria-label="Settings sections"><div class="st-nav"><span class="st-nav__pill" aria-hidden="true"></span>
+        ${O.map(e=>
+
+<!-- === TEMPLATE 50 === -->
+<span class="st-tab__lock" title="Read only for your role">${T(
+
+<!-- === TEMPLATE 51 === -->
+)}
+      </div></nav>
+    </aside>
+    <section class="card st-main" aria-label="Settings"><div class="st-panel" data-panel tabindex="-1"></div><p class="sr" aria-live="polite" data-live></p></section>
+  </div>

@@ -206,3 +206,18 @@
 .flying-button[data-carry] .flying-button__cursor {
   display: block;
 }
+
+/* Fixed bottom-right rocket dock rules */
+.fixed-rocket-dock .flying-button {
+  pointer-events: none;
+}
+
+.fixed-rocket-dock .flying-button[data-carry],
+.fixed-rocket-dock .flying-button[data-dragging] {
+  pointer-events: auto;
+}
+
+.fixed-rocket-dock .flying-button__craft {
+  pointer-events: auto !important;
+}
+

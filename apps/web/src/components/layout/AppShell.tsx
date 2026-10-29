@@ -1064,8 +1064,10 @@ export function AppShell() {
         <section key={location.pathname} className="view" data-view={currentView}>
           <Outlet context={{ selectedBrandId, setSelectedBrandId }} />
         </section>
-        <BackToTopRocket />
       </main>
+
+      {/* Fixed bottom-right back to top ascent button */}
+      <BackToTopRocket />
     </div>
   );
 }

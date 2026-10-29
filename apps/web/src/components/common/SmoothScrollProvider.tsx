@@ -12,31 +12,24 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    // Initialize high-performance momentum smooth scroll
+    // High-performance physics-based Lerp momentum scrolling (Zero Jitter)
+    // autoRaf: true synchronizes directly with the browser's display refresh rate (60Hz / 120Hz ProMotion)
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.082,
+      smoothWheel: true,
+      syncTouch: false,
+      autoRaf: true,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.4,
-      infinite: false,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.0,
+      autoResize: true,
     });
 
     lenisRef.current = lenis;
-
-    let animationFrameId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      animationFrameId = requestAnimationFrame(raf);
-    }
-    animationFrameId = requestAnimationFrame(raf);
-
     (window as any).__lenis = lenis;
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
       lenis.destroy();
       (window as any).__lenis = null;
       lenisRef.current = null;

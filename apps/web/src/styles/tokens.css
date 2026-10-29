@@ -1440,16 +1440,27 @@ kbd {
 }
 
 /* ==========================================================================
-   13. Global Momentum Smooth-Scroll Engine (Lenis & CSS)
+   13. Global Momentum Smooth-Scroll Engine (Lenis & Zero-Jitter Rules)
    ========================================================================== */
-html {
-  scroll-behavior: smooth;
-  height: auto;
+
+/* Completely disable native CSS smooth scroll so it NEVER fights Lenis RAF loop */
+html,
+body,
+:root,
+.app,
+.view,
+.main {
+  scroll-behavior: auto !important;
 }
 
 html.lenis,
 html.lenis body {
   height: auto;
+}
+
+/* While actively scrolling, disable hover triggers across all elements to prevent layout/re-raster jank */
+html.lenis-scrolling * {
+  pointer-events: none !important;
 }
 
 .lenis.lenis-smooth {
@@ -1465,6 +1476,7 @@ html.lenis body {
 .tm-mx-wrap,
 .cm-media {
   overscroll-behavior: contain;
+  pointer-events: auto !important;
 }
 
 .lenis.lenis-stopped {
@@ -1473,12 +1485,5 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
-}
-
-/* Scroll performance & hardware acceleration for scrollable views */
-.app,
-.view,
-.main {
-  scroll-behavior: smooth;
 }
 

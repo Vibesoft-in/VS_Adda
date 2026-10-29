@@ -847,8 +847,9 @@ export function AnalyticsView() {
             <button
               key={net.id}
               type="button"
-              className="chip an-chip"
+              className={`chip an-chip ${isSelected ? 'active' : ''}`}
               aria-current={isSelected}
+              aria-pressed={isSelected}
               onClick={() => setActiveNetwork(net.id)}
             >
               {net.id === 'all' ? (

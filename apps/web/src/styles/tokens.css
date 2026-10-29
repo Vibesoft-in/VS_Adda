@@ -20,14 +20,74 @@
 }
 
 .chip[aria-pressed="true"],
-.chip.active {
+.chip[aria-current="true"],
+.chip.active,
+.an-chip[aria-current="true"],
+.an-chip[aria-pressed="true"],
+.an-chip.active {
   background: var(--pill) !important;
+  color: var(--on-pill) !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.22) !important;
+  opacity: 1 !important;
+}
+
+.chip[aria-pressed="true"] .bmark,
+.chip[aria-current="true"] .bmark,
+.chip.active .bmark {
+  box-shadow: 0 0 0 2px var(--on-pill) !important;
+}
+
+/* Ensure icons, badges, and text inside active chips are fully visible with strong contrast */
+.chip[aria-pressed="true"] .ico,
+.chip[aria-current="true"] .ico,
+.chip.active .ico,
+.an-chip[aria-current="true"] .ico,
+.an-chip[aria-pressed="true"] .ico,
+.an-chip.active .ico {
+  color: var(--on-pill) !important;
+}
+
+.chip[aria-pressed="true"] .net,
+.chip[aria-current="true"] .net,
+.chip.active .net,
+.an-chip[aria-current="true"] .net,
+.an-chip[aria-pressed="true"] .net,
+.an-chip.active .net {
+  background: rgba(255, 255, 255, 0.22) !important;
   color: var(--on-pill) !important;
   border-color: transparent !important;
 }
 
-.chip[aria-pressed="true"] .bmark {
-  box-shadow: 0 0 0 2px var(--on-pill) !important;
+:root[data-theme="dark"] .chip[aria-pressed="true"] .net,
+:root[data-theme="dark"] .chip[aria-current="true"] .net,
+:root[data-theme="dark"] .chip.active .net,
+:root[data-theme="dark"] .an-chip[aria-current="true"] .net,
+:root[data-theme="dark"] .an-chip[aria-pressed="true"] .net,
+:root[data-theme="dark"] .an-chip.active .net {
+  background: rgba(0, 0, 0, 0.22) !important;
+  color: var(--on-pill) !important;
+  border-color: transparent !important;
+}
+
+.chip[aria-pressed="true"] .an-chip__n,
+.chip[aria-current="true"] .an-chip__n,
+.chip.active .an-chip__n,
+.an-chip[aria-current="true"] .an-chip__n,
+.an-chip[aria-pressed="true"] .an-chip__n,
+.an-chip.active .an-chip__n {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: var(--on-pill) !important;
+}
+
+:root[data-theme="dark"] .chip[aria-pressed="true"] .an-chip__n,
+:root[data-theme="dark"] .chip[aria-current="true"] .an-chip__n,
+:root[data-theme="dark"] .chip.active .an-chip__n,
+:root[data-theme="dark"] .an-chip[aria-current="true"] .an-chip__n,
+:root[data-theme="dark"] .an-chip[aria-pressed="true"] .an-chip__n,
+:root[data-theme="dark"] .an-chip.active .an-chip__n {
+  background: rgba(0, 0, 0, 0.25) !important;
+  color: var(--on-pill) !important;
 }
 
 /* Apple iOS 18 Ambient Dynamic Mesh Blobs with GPU Layer Isolation */
@@ -848,7 +908,7 @@ body {
 }
 
 .ibtn--glass,
-.chip:not([aria-pressed="true"]):not(.active),
+.chip:not([aria-pressed="true"]):not([aria-current="true"]):not(.active),
 .btn--ghost {
   background: rgba(255, 255, 255, 0.28) !important;
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
@@ -857,7 +917,7 @@ body {
 }
 
 :root[data-theme="dark"] .ibtn--glass,
-:root[data-theme="dark"] .chip:not([aria-pressed="true"]):not(.active),
+:root[data-theme="dark"] .chip:not([aria-pressed="true"]):not([aria-current="true"]):not(.active),
 :root[data-theme="dark"] .btn--ghost {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -865,14 +925,14 @@ body {
 }
 
 .ibtn--glass:hover,
-.chip:not([aria-pressed="true"]):hover,
+.chip:not([aria-pressed="true"]):not([aria-current="true"]):not(.active):hover,
 .btn--ghost:hover {
   background: rgba(255, 255, 255, 0.48) !important;
   transform: translateY(-1px) !important;
 }
 
 :root[data-theme="dark"] .ibtn--glass:hover,
-:root[data-theme="dark"] .chip:not([aria-pressed="true"]):hover,
+:root[data-theme="dark"] .chip:not([aria-pressed="true"]):not([aria-current="true"]):not(.active):hover,
 :root[data-theme="dark"] .btn--ghost:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   transform: translateY(-1px) !important;

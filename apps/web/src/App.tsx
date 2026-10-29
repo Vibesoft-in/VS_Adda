@@ -19,6 +19,7 @@ import { TeamView } from './components/team/TeamView.js';
 import { SettingsView } from './components/settings/SettingsView.js';
 import { ToastContainer } from './components/common/ToastContainer.js';
 import { CommandPalette } from './components/common/CommandPalette.js';
+import { SmoothScrollProvider } from './components/common/SmoothScrollProvider.js';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -105,9 +106,11 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <AppRoutes />
-        <ToastContainer />
-        <CommandPalette />
+        <SmoothScrollProvider>
+          <AppRoutes />
+          <ToastContainer />
+          <CommandPalette />
+        </SmoothScrollProvider>
       </BrowserRouter>
     </QueryClientProvider>
   );

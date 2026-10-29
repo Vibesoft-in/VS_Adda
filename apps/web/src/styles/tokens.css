@@ -558,26 +558,220 @@ body,
   opacity: 0.045;
 }
 
-/* Crisp Bento Specular Lighting on Cards */
-.card {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 18px 40px -20px rgba(22, 25, 29, 0.09) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+/* ==========================================================================
+   Apple iOS Liquid Glassmorphism System
+   ========================================================================== */
+
+/* 1. Cards, Modals, Drawers & Popovers */
+.card,
+.modal,
+.drawer,
+.finder,
+.pop,
+.pv {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+    0 20px 48px -20px rgba(22, 25, 29, 0.1) !important;
+  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.24s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-:root[data-theme="dark"] .card {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.09) inset, 0 20px 46px -18px rgba(0, 0, 0, 0.65) !important;
-  background: rgba(18, 20, 23, 0.8) !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .modal,
+:root[data-theme="dark"] .drawer,
+:root[data-theme="dark"] .finder,
+:root[data-theme="dark"] .pop,
+:root[data-theme="dark"] .pv {
+  background: rgba(18, 20, 24, 0.72) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 24px 56px -18px rgba(0, 0, 0, 0.75) !important;
 }
 
 .card:hover {
-  border-color: var(--line-2) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.95),
+    0 24px 56px -20px rgba(22, 25, 29, 0.14) !important;
 }
 
 :root[data-theme="dark"] .card:hover {
-  border-color: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.28),
+    0 28px 64px -18px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 2. Glass Icon Containers & Badges */
+.stat__ico,
+.msheet__ico,
+.cc-mark,
+.cm-pr__ico {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), 0 4px 14px -3px rgba(0, 0, 0, 0.06) !important;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+:root[data-theme="dark"] .stat__ico,
+:root[data-theme="dark"] .msheet__ico,
+:root[data-theme="dark"] .cc-mark,
+:root[data-theme="dark"] .cm-pr__ico {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 6px 18px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.stat:hover .stat__ico {
+  transform: scale(1.06);
+}
+
+/* 3. Glass Interactive Controls (Buttons, Chips, Badges, Switches) */
+.ibtn,
+.chip,
+.spill,
+.bswitch,
+.me,
+.btn--ghost,
+.seg {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+}
+
+.ibtn--glass,
+.chip:not([aria-pressed="true"]):not(.active),
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.52) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 2px 8px -2px rgba(0, 0, 0, 0.04) !important;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.18s, box-shadow 0.18s !important;
+}
+
+:root[data-theme="dark"] .ibtn--glass,
+:root[data-theme="dark"] .chip:not([aria-pressed="true"]):not(.active),
+:root[data-theme="dark"] .btn--ghost {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.ibtn--glass:hover,
+.chip:not([aria-pressed="true"]):hover,
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.75) !important;
+  transform: translateY(-1px) !important;
+}
+
+:root[data-theme="dark"] .ibtn--glass:hover,
+:root[data-theme="dark"] .chip:not([aria-pressed="true"]):hover,
+:root[data-theme="dark"] .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.13) !important;
+  transform: translateY(-1px) !important;
+}
+
+.bswitch,
+.me {
+  background: rgba(255, 255, 255, 0.58) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), 0 4px 12px -3px rgba(0, 0, 0, 0.05) !important;
+}
+
+:root[data-theme="dark"] .bswitch,
+:root[data-theme="dark"] .me {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18), 0 6px 16px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 4. Glass Inputs & Textareas */
+.input,
+.search,
+.field input,
+.field select,
+.field textarea,
+.cm-box {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(14px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+:root[data-theme="dark"] .input,
+:root[data-theme="dark"] .search,
+:root[data-theme="dark"] .field input,
+:root[data-theme="dark"] .field select,
+:root[data-theme="dark"] .field textarea,
+:root[data-theme="dark"] .cm-box {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.input:focus,
+.search:focus-within,
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.cm-box:focus-within {
+  border-color: var(--text) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 0 3px rgba(242, 183, 64, 0.22) !important;
+}
+
+/* 5. Liquid Glass Sidebar Dock */
+.dock {
+  background: rgba(22, 25, 29, 0.82) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 24px 52px -16px rgba(0, 0, 0, 0.55) !important;
+}
+
+:root[data-theme="dark"] .dock {
+  background: rgba(16, 18, 22, 0.72) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    0 28px 60px -18px rgba(0, 0, 0, 0.85) !important;
+}
+
+.dock__btn {
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.18s !important;
+}
+
+.dock__btn:hover {
+  transform: scale(1.08) !important;
+}
+
+/* 6. Liquid Glass Social Badges & Feed Cards */
+.cm-dr,
+.signin__person,
+.cc-net,
+.feed__item {
+  background: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(14px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 4px 12px -3px rgba(0, 0, 0, 0.04) !important;
+}
+
+:root[data-theme="dark"] .cm-dr,
+:root[data-theme="dark"] .signin__person,
+:root[data-theme="dark"] .cc-net,
+:root[data-theme="dark"] .feed__item {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.16), 0 6px 16px -4px rgba(0, 0, 0, 0.45) !important;
 }
 
 /* Typography Hierarchy & Kerning */

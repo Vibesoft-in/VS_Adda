@@ -1086,8 +1086,8 @@ export function TeamView() {
 
             {/* 3 Bottom Cards (Seats · Two-Factor · Pending Invites) */}
             <aside className="tm-side">
-              {/* Card 1: Seats · Agency Plan (Dark Card) */}
-              <section className="card tile tone--ink tm-seats" aria-label="Seats">
+              {/* Card 1: Seats · Agency Plan (Glass Card) */}
+              <section className="card tile tm-seats" aria-label="Seats">
                 <p className="tm-seats__k">
                   <svg className="ico" viewBox="0 0 24 24">
                     <rect x="3" y="5.5" width="18" height="13" rx="2.5" />
@@ -2049,7 +2049,7 @@ export function TeamView() {
                 </button>
               </div>
               <div style={{ padding: '0 22px 20px' }}>
-                <div className="card tile tone--ink" style={{ padding: 18, marginBottom: 14 }}>
+                <div className="card tile tm-seats-panel" style={{ padding: 18, marginBottom: 14 }}>
                   <p style={{ fontSize: 13, opacity: 0.8 }}>Seats in use</p>
                   <p style={{ fontSize: 32, fontWeight: 700, margin: '4px 0' }}>
                     {seatsUsedCount} <span style={{ fontSize: 18, opacity: 0.7 }}>/ {seatLimit}</span>

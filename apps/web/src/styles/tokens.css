@@ -588,6 +588,9 @@ body,
 :root {
   --font: "Urbanist", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --text: #0f172a;
+  --muted: #475569;
+  --faint: #64748b;
   --glass: rgba(255, 255, 255, 0.28);
   --glass-2: rgba(255, 255, 255, 0.18);
   --glass-3: rgba(255, 255, 255, 0.38);
@@ -597,6 +600,10 @@ body,
   --bg: #090a0c;
   --solid: #121417;
   --float: #171a1e;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --faint: #94a3b8;
+  --on-ink: #f8fafc;
   --glass: rgba(18, 20, 23, 0.45);
   --glass-2: rgba(255, 255, 255, 0.04);
   --glass-3: #181b20;
@@ -981,6 +988,433 @@ kbd {
   from { width: 100%; }
   to { width: 0%; }
 }
+
+/* ==========================================================================
+   Universal High-Contrast & Text Visibility Engine (Dark + Light Mode)
+   Fixes invisible text across all glass cards, action bars, and controls
+   ========================================================================== */
+
+/* 1. All Tone Cards & Glass Containers: text must never invert to invisible */
+.card.tone--ink,
+.tile.tone--ink,
+.card[class*="tone--"],
+.tile[class*="tone--"] {
+  color: var(--text) !important;
+}
+
+/* Subtle frosted tinted glass backgrounds for tone cards */
+.card.tone--pine, .tile.tone--pine {
+  background: linear-gradient(135deg, rgba(17, 116, 90, 0.22) 0%, rgba(17, 116, 90, 0.12) 100%) !important;
+  border-color: rgba(17, 116, 90, 0.35) !important;
+  color: var(--text) !important;
+}
+
+.card.tone--sea, .tile.tone--sea {
+  background: linear-gradient(135deg, rgba(31, 104, 168, 0.22) 0%, rgba(31, 104, 168, 0.12) 100%) !important;
+  border-color: rgba(31, 104, 168, 0.35) !important;
+  color: var(--text) !important;
+}
+
+.card.tone--lilac, .tile.tone--lilac {
+  background: linear-gradient(135deg, rgba(11, 122, 135, 0.22) 0%, rgba(11, 122, 135, 0.12) 100%) !important;
+  border-color: rgba(11, 122, 135, 0.35) !important;
+  color: var(--text) !important;
+}
+
+.card.tone--coral, .tile.tone--coral {
+  background: linear-gradient(135deg, rgba(196, 60, 48, 0.22) 0%, rgba(196, 60, 48, 0.12) 100%) !important;
+  border-color: rgba(196, 60, 48, 0.35) !important;
+  color: var(--text) !important;
+}
+
+.card.tone--butter, .tile.tone--butter {
+  background: linear-gradient(135deg, rgba(242, 183, 64, 0.22) 0%, rgba(242, 183, 64, 0.12) 100%) !important;
+  border-color: rgba(242, 183, 64, 0.35) !important;
+  color: var(--text) !important;
+}
+
+/* 2. Compose Action Bar (.cm-bar) High-Contrast Legibility */
+.cm-bar,
+.cm-bar.tone--ink {
+  color: var(--text) !important;
+}
+
+.cm-bar__k {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}
+
+.cm-bar__v {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+.cm-bar__v b {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+.cm-bar__v span {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.cm-bar__appr {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+.cm-bar__why {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+.cm-sec {
+  color: var(--text) !important;
+  border: 1px solid var(--line-2) !important;
+  background: var(--glass-2) !important;
+  font-weight: 600 !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.cm-sec:hover:not(:disabled) {
+  background: var(--glass-3) !important;
+  color: var(--text) !important;
+  border-color: var(--rim) !important;
+  transform: translateY(-1px) !important;
+}
+
+.cm-sec:disabled,
+.cm-sec[aria-disabled="true"] {
+  opacity: 0.45 !important;
+  color: var(--muted) !important;
+  cursor: not-allowed !important;
+}
+
+.cm-go {
+  background: var(--butter) !important;
+  color: #16191d !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 16px -2px rgba(242, 183, 64, 0.45) !important;
+}
+
+.cm-go:hover:not(:disabled) {
+  background: #f6d56d !important;
+  color: #16191d !important;
+  box-shadow: 0 6px 20px -2px rgba(242, 183, 64, 0.6) !important;
+}
+
+.cm-go:disabled,
+.cm-go[aria-disabled="true"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--muted) !important;
+  box-shadow: none !important;
+}
+
+:root[data-theme="dark"] .cm-sec {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #f8fafc !important;
+}
+
+:root[data-theme="dark"] .cm-sec:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+:root:not([data-theme="dark"]) .cm-sec {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  color: #0f172a !important;
+}
+
+:root:not([data-theme="dark"]) .cm-sec:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+}
+
+/* 3. Compose Editor Notice Pills & Problem Indicators */
+.cm-prob {
+  background: var(--glass-2) !important;
+  border: 1px solid var(--line-2) !important;
+  color: var(--text) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.cm-prob > i {
+  background: var(--faint) !important;
+}
+
+.cm-prob--butter {
+  color: var(--warn) !important;
+  background: rgba(242, 183, 64, 0.15) !important;
+  border-color: rgba(242, 183, 64, 0.35) !important;
+}
+
+.cm-prob--coral {
+  color: var(--bad) !important;
+  background: rgba(196, 60, 48, 0.15) !important;
+  border-color: rgba(196, 60, 48, 0.35) !important;
+}
+
+.cm-prob--pine {
+  color: var(--good) !important;
+  background: rgba(17, 116, 90, 0.15) !important;
+  border-color: rgba(17, 116, 90, 0.35) !important;
+}
+
+/* 4. Character Rings in Composer */
+.cm-ring {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+.cm-ring__track {
+  stroke: var(--line-2) !important;
+}
+
+.cm-ring__arc {
+  stroke: var(--text) !important;
+}
+
+/* 5. Timeline, Schedule & Notes in Composer */
+.cm-day__ticks {
+  color: var(--muted) !important;
+  font-weight: 600 !important;
+}
+
+.cm-day__note {
+  color: var(--muted) !important;
+}
+
+.cm-tz {
+  color: var(--muted) !important;
+}
+
+.cm-xbtn {
+  color: var(--text) !important;
+}
+
+.cm-xbtn small {
+  color: var(--muted) !important;
+  font-weight: 500 !important;
+}
+
+.cm-xbtn:hover {
+  background: var(--glass-2) !important;
+}
+
+.cm-tzpill {
+  background: var(--glass-2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+}
+
+/* 6. Empty States Contrast */
+.empty {
+  color: var(--muted) !important;
+}
+
+.empty__title {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+.empty__text {
+  color: var(--muted) !important;
+  line-height: 1.45 !important;
+}
+
+/* 7. Card Subheaders & General UI Metadata */
+.card__sub {
+  color: var(--muted) !important;
+}
+
+.stat__label {
+  color: var(--muted) !important;
+}
+
+.legend {
+  color: var(--muted) !important;
+}
+
+.locknote {
+  color: var(--muted) !important;
+}
+
+.locknote .ico {
+  color: var(--text) !important;
+}
+
+/* 8. Team View High Contrast */
+.tm-seats,
+.tm-seats.card,
+.tm-seats-panel {
+  color: var(--text) !important;
+}
+
+.tm-seats__k {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.tm-seats__v b {
+  color: var(--text) !important;
+}
+
+.tm-seats__v span {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.tm-seats__s {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.tm-seats__btn {
+  color: var(--text) !important;
+  border: 1px solid var(--line-2) !important;
+  background: var(--glass-2) !important;
+}
+
+.tm-seats__btn:hover {
+  background: var(--glass-3) !important;
+}
+
+.tm-rc {
+  color: var(--text) !important;
+}
+
+.tm-rc__desc {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.tm-rc__num b {
+  color: var(--text) !important;
+}
+
+.tm-rc__num small {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.tm-rc__foot small {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.tm-thead {
+  color: var(--muted) !important;
+  font-weight: 600 !important;
+}
+
+.tm-who small {
+  color: var(--muted) !important;
+}
+
+.tm-title {
+  color: var(--muted) !important;
+}
+
+.tm-last {
+  color: var(--muted) !important;
+}
+
+/* 9. Settings View Plans & Profiles */
+.st-plan {
+  color: var(--text) !important;
+}
+
+.st-plan.is-current {
+  background: linear-gradient(135deg, rgba(242, 183, 64, 0.16) 0%, rgba(242, 183, 64, 0.08) 100%) !important;
+  border: 1.5px solid var(--butter) !important;
+  color: var(--text) !important;
+}
+
+.st-plan__top b,
+.st-plan__price b {
+  color: var(--text) !important;
+}
+
+.st-plan__price span,
+.st-plan__lim {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+.st-plan__perks li {
+  color: var(--text) !important;
+}
+
+.st-item__t small {
+  color: var(--muted) !important;
+}
+
+.st-note {
+  color: var(--muted) !important;
+}
+
+/* 10. Form Labels & Input Placeholders */
+.field__label {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+.field__hint {
+  color: var(--muted) !important;
+}
+
+.input::placeholder,
+.search input::placeholder,
+.cm-text::placeholder,
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--faint) !important;
+  opacity: 0.85 !important;
+}
+
+/* 11. Tables and Data Grids */
+.table th {
+  color: var(--muted) !important;
+  font-weight: 600 !important;
+}
+
+.table td {
+  color: var(--text) !important;
+}
+
+.cell-person small {
+  color: var(--muted) !important;
+}
+
+/* 12. Charts & SVG Visualizations */
+.chart__grid text,
+.chart__x text,
+.bars__lab {
+  fill: var(--muted) !important;
+  color: var(--muted) !important;
+  font-weight: 500 !important;
+}
+
+.donut__mid span {
+  color: var(--muted) !important;
+}
+
+.chart__tip span {
+  color: var(--muted) !important;
+}
+
+.chart__tip strong {
+  color: var(--text) !important;
+}
+
 
 
 

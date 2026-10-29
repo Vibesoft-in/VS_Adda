@@ -1150,7 +1150,7 @@ export function ComposeView() {
         </section>
 
         {/* Action Bar (.cm-bar) */}
-        <section className="cm-bar card tone--ink">
+        <section className="cm-bar card">
           <div className="cm-bar__k">
             <Sparkles className="ico" />
             <span>{canPublish ? 'You can publish directly' : 'Requires approval before publishing'}</span>

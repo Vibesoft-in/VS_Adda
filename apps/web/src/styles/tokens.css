@@ -588,14 +588,17 @@ body,
 :root {
   --font: "Urbanist", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --glass: rgba(255, 255, 255, 0.28);
+  --glass-2: rgba(255, 255, 255, 0.18);
+  --glass-3: rgba(255, 255, 255, 0.38);
 }
 
 :root[data-theme="dark"] {
   --bg: #090a0c;
   --solid: #121417;
   --float: #171a1e;
-  --glass: rgba(18, 20, 23, 0.78);
-  --glass-2: rgba(255, 255, 255, 0.05);
+  --glass: rgba(18, 20, 23, 0.45);
+  --glass-2: rgba(255, 255, 255, 0.04);
   --glass-3: #181b20;
   --line: rgba(255, 255, 255, 0.08);
   --line-2: rgba(255, 255, 255, 0.14);
@@ -657,13 +660,13 @@ body {
 .ap-rule,
 .an-card,
 .cm-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.38) 100%) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.16) 100%) !important;
   backdrop-filter: blur(28px) saturate(220%) contrast(102%) !important;
   -webkit-backdrop-filter: blur(28px) saturate(220%) contrast(102%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
   box-shadow: 
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 1),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.03),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.02),
     0 20px 48px -12px rgba(15, 23, 42, 0.12) !important;
   transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.24s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
@@ -678,25 +681,27 @@ body {
 :root[data-theme="dark"] .ap-rule,
 :root[data-theme="dark"] .an-card,
 :root[data-theme="dark"] .cm-card {
-  background: linear-gradient(135deg, rgba(24, 28, 36, 0.65) 0%, rgba(14, 17, 23, 0.75) 100%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+  background: linear-gradient(135deg, rgba(24, 28, 36, 0.42) 0%, rgba(14, 17, 23, 0.52) 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
   box-shadow: 
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.25),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.22),
     inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4),
     0 24px 60px -18px rgba(0, 0, 0, 0.8) !important;
 }
 
 .card:hover,
 [data-view="approvals"] .ap-card:hover {
-  border-color: rgba(255, 255, 255, 0.98) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.24) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
   box-shadow: 
     inset 0 1.5px 2.5px 0 rgba(255, 255, 255, 1),
-    0 28px 56px -14px rgba(15, 23, 42, 0.18) !important;
+    0 28px 56px -14px rgba(15, 23, 42, 0.16) !important;
 }
 
 :root[data-theme="dark"] .card:hover,
 :root[data-theme="dark"] [data-view="approvals"] .ap-card:hover {
-  border-color: rgba(255, 255, 255, 0.28) !important;
+  background: linear-gradient(135deg, rgba(24, 28, 36, 0.55) 0%, rgba(14, 17, 23, 0.65) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
   box-shadow: 
     inset 0 1.5px 2.5px 0 rgba(255, 255, 255, 0.35),
     0 30px 68px -16px rgba(0, 0, 0, 0.9) !important;
@@ -705,66 +710,66 @@ body {
 /* Glass Tabs & Floating Segmented Controls */
 .tabs,
 .seg {
-  background: rgba(255, 255, 255, 0.58) !important;
+  background: rgba(255, 255, 255, 0.32) !important;
   backdrop-filter: blur(24px) saturate(210%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(210%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.88) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.78) !important;
   box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.95), 0 10px 28px -6px rgba(15, 23, 42, 0.08) !important;
 }
 
 :root[data-theme="dark"] .tabs,
 :root[data-theme="dark"] .seg {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 12px 30px -8px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Glass Post Floating Badges on Media */
 [data-view="approvals"] .ap-when {
-  background: linear-gradient(135deg, rgba(245, 175, 42, 0.88) 0%, rgba(220, 145, 25, 0.92) 100%) !important;
+  background: linear-gradient(135deg, rgba(245, 175, 42, 0.75) 0%, rgba(220, 145, 25, 0.82) 100%) !important;
   backdrop-filter: blur(20px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
   border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), 0 8px 24px -4px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), 0 8px 24px -4px rgba(0, 0, 0, 0.3) !important;
   color: #16191d !important;
 }
 
 [data-view="approvals"] .ap-nets,
 [data-view="approvals"] .ap-sel {
-  background: rgba(255, 255, 255, 0.78) !important;
+  background: rgba(255, 255, 255, 0.48) !important;
   backdrop-filter: blur(20px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.88) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 6px 18px -4px rgba(0, 0, 0, 0.14) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 6px 18px -4px rgba(0, 0, 0, 0.12) !important;
 }
 
 :root[data-theme="dark"] [data-view="approvals"] .ap-nets,
 :root[data-theme="dark"] [data-view="approvals"] .ap-sel {
-  background: rgba(24, 28, 36, 0.75) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  background: rgba(24, 28, 36, 0.5) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 8px 20px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Glass Details Card Inside Card Body */
 [data-view="approvals"] .ap-people,
 .locknote {
-  background: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.22) !important;
   backdrop-filter: blur(18px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(18px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85), 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
 }
 
 :root[data-theme="dark"] [data-view="approvals"] .ap-people,
 :root[data-theme="dark"] .locknote {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* Side Panel "The Rule in Force" Deep Sapphire Glass Tile */
 [data-view="approvals"] .ap-rule__tile.tone--sea {
-  background: linear-gradient(135deg, rgba(31, 104, 168, 0.88) 0%, rgba(18, 70, 120, 0.94) 100%) !important;
+  background: linear-gradient(135deg, rgba(31, 104, 168, 0.68) 0%, rgba(18, 70, 120, 0.8) 100%) !important;
   backdrop-filter: blur(24px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
   border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
@@ -777,11 +782,11 @@ body {
 .msheet__ico,
 .cc-mark,
 .cm-pr__ico {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.45) 100%) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
   backdrop-filter: blur(20px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
-  box-shadow: inset 0 1.5px 1.5px rgba(255, 255, 255, 1), 0 6px 18px -4px rgba(15, 23, 42, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: inset 0 1.5px 1.5px rgba(255, 255, 255, 0.9), 0 6px 18px -4px rgba(15, 23, 42, 0.06) !important;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
@@ -789,8 +794,8 @@ body {
 :root[data-theme="dark"] .msheet__ico,
 :root[data-theme="dark"] .cc-mark,
 :root[data-theme="dark"] .cm-pr__ico {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 6px 18px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -813,45 +818,45 @@ body {
 .ibtn--glass,
 .chip:not([aria-pressed="true"]):not(.active),
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.52) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 2px 8px -2px rgba(0, 0, 0, 0.04) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), 0 2px 8px -2px rgba(0, 0, 0, 0.03) !important;
   transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.18s, box-shadow 0.18s !important;
 }
 
 :root[data-theme="dark"] .ibtn--glass,
 :root[data-theme="dark"] .chip:not([aria-pressed="true"]):not(.active),
 :root[data-theme="dark"] .btn--ghost {
-  background: rgba(255, 255, 255, 0.07) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.4) !important;
 }
 
 .ibtn--glass:hover,
 .chip:not([aria-pressed="true"]):hover,
 .btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.75) !important;
+  background: rgba(255, 255, 255, 0.48) !important;
   transform: translateY(-1px) !important;
 }
 
 :root[data-theme="dark"] .ibtn--glass:hover,
 :root[data-theme="dark"] .chip:not([aria-pressed="true"]):hover,
 :root[data-theme="dark"] .btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.13) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   transform: translateY(-1px) !important;
 }
 
 .bswitch,
 .me {
-  background: rgba(255, 255, 255, 0.58) !important;
-  border: 1px solid rgba(255, 255, 255, 0.65) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), 0 4px 12px -3px rgba(0, 0, 0, 0.05) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85), 0 4px 12px -3px rgba(0, 0, 0, 0.05) !important;
 }
 
 :root[data-theme="dark"] .bswitch,
 :root[data-theme="dark"] .me {
-  background: rgba(255, 255, 255, 0.07) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18), 0 6px 16px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -862,10 +867,10 @@ body {
 .field select,
 .field textarea,
 .cm-box {
-  background: rgba(255, 255, 255, 0.55) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
   backdrop-filter: blur(14px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
 }
 
@@ -875,8 +880,8 @@ body {
 :root[data-theme="dark"] .field select,
 :root[data-theme="dark"] .field textarea,
 :root[data-theme="dark"] .cm-box {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -892,17 +897,17 @@ body {
 
 /* 5. Liquid Glass Sidebar Dock */
 .dock {
-  background: rgba(22, 25, 29, 0.82) !important;
-  backdrop-filter: blur(28px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: rgba(22, 25, 29, 0.48) !important;
+  backdrop-filter: blur(32px) saturate(220%) contrast(105%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(220%) contrast(105%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 24px 52px -16px rgba(0, 0, 0, 0.55) !important;
+    0 24px 52px -16px rgba(0, 0, 0, 0.45) !important;
 }
 
 :root[data-theme="dark"] .dock {
-  background: rgba(16, 18, 22, 0.72) !important;
+  background: rgba(14, 16, 20, 0.42) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.18),
@@ -922,10 +927,10 @@ body {
 .signin__person,
 .cc-net,
 .feed__item {
-  background: rgba(255, 255, 255, 0.52) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
   backdrop-filter: blur(14px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 4px 12px -3px rgba(0, 0, 0, 0.04) !important;
 }
 
@@ -933,7 +938,7 @@ body {
 :root[data-theme="dark"] .signin__person,
 :root[data-theme="dark"] .cc-net,
 :root[data-theme="dark"] .feed__item {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.16), 0 6px 16px -4px rgba(0, 0, 0, 0.45) !important;
 }

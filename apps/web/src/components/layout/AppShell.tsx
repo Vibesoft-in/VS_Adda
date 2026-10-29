@@ -6,6 +6,7 @@ import { NetworkIcon } from '../common/NetworkIcon.js';
 import { animateElasticPill } from '../../lib/elasticPill.js';
 import { initMagnetic } from '../../lib/magnetic.js';
 import { animatePageEntrance, initContinuousIconFloat } from '../../lib/entrance.js';
+import { BackToTopRocket } from '../common/BackToTopRocket.js';
 
 const getBrandMonogram = (name: string) => {
   const parts = name.trim().split(/\s+/);
@@ -1063,6 +1064,7 @@ export function AppShell() {
         <section key={location.pathname} className="view" data-view={currentView}>
           <Outlet context={{ selectedBrandId, setSelectedBrandId }} />
         </section>
+        <BackToTopRocket />
       </main>
     </div>
   );

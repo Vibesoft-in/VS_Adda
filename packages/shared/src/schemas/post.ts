@@ -67,6 +67,7 @@ export const validatePostSchema = z.object({
   firstComment: z.string().optional().nullable(),
   channelIds: z.array(z.string()),
   mediaAssetIds: z.array(z.string()).default([]),
+  mediaUrls: z.array(z.string()).default([]),
   scheduledAt: z.string().datetime().optional().nullable(),
 });
 
